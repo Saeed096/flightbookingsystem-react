@@ -39,6 +39,7 @@ export default function FlightCard(props) {
       <div className="card mostVisitedCard" style={{ width: "18rem", opacity: 0 }} ref={mostVisitedCardRef}>
         <img className="card-img-top" src={flightDetails.image} alt="Card cap" />
         <div className="card-body">
+        sss
           <h5 className="card-title">From <span style={{ color: 'hsl(199, 100%, 33%)' }}> {flightDetails.sourceAirportName}</span></h5>
           <h5 className="card-title">
             <i className="fa-solid fa-location-dot text-info"></i> To <span style={{ color: 'hsl(199, 100%, 33%)' }}>{flightDetails.destinationAirportName}</span>
