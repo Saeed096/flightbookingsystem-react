@@ -8,17 +8,11 @@ import NotFound from "./components/NotFound/NotFound";
 import TokenContextProvider from "./Context/TokenContext";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import MostVisited from "./components/MostVisited/MostVisited";
-import Details from "./components/Details/Details";
 import FlightDetails from "./components/FlightDetails/FlightDetails";
 import About from "./components/About/About";
-// import { Provider } from "react-redux";
-// import store from "./redux/store";
 import AddTicket from "./components/AddTicket/AddTicket";
-
 import FlightsDashboard from "./components/FlightsDashboard/FlightsDashboard";
 import FlightDashboardContextProvider from "./Context/flightDashboardContext";
-import { Provider } from "react-redux";
-import store from "./redux/store";
 import ConfirmEmail from "./components/ConfirmEmail/ConfirmEmail";
 import ConfirmationMessage from "./components/ConfirmationMessage/ConfirmationMessage";
 import Ticket from "./components/Ticket/Ticket";
@@ -28,11 +22,12 @@ import FlightContextProvider from "./Context/FlightContext";
 import PassengerContextProvider from "./Context/PassengerIDContext";
 import SearchDataContextProvider from "./Context/SearchFlightContext";
 import TicketContextProvider from "./Context/TicketContext";
-
 import NewFlight from "./components/NewFlight/NewFlight";
-import AddPassenger from "./components/AddPassenger/AddPassenger";
 import AddPassengerContextProvider from "./Context/AddPassengerContext";
-
+import Thanks from "./components/Thanks/Thanks"
+import BeforeTravel from "./components/BeforeTravel/BeforeTravel";
+import EditFlight from './components/EditFlight/EditFlight'
+import AddNewPassenger from "./components/AddPassenger/AddPassenger";
 
 const router = createBrowserRouter([
   {
@@ -67,17 +62,25 @@ const router = createBrowserRouter([
       {
         path: "addpassenger",
         element: (
-          <ProtectedRoute>
+          <ProtectedRoute> 
             {" "}
-            <AddPassenger />{" "}
+            <AddNewPassenger />{" "}
           </ProtectedRoute>
         ),
       },
       {
-        path: "details",
+        path: "edit/:id",
         element: (
           <ProtectedRoute>
-            <Details />{" "}
+            <EditFlight/>
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "NewFlight",
+        element: (
+          <ProtectedRoute>
+            <NewFlight />
           </ProtectedRoute>
         ),
       },
@@ -131,6 +134,24 @@ const router = createBrowserRouter([
           </ProtectedRoute>
         ),
       },
+      {
+        path: "thank",
+        element: (
+          <ProtectedRoute>
+            <Thanks/>
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "beforetravel",
+        element: (
+          <ProtectedRoute>
+            <BeforeTravel/>
+          </ProtectedRoute>
+        ),
+      },
+
+
     ],
   },
   { path: "*", element: <NotFound /> },

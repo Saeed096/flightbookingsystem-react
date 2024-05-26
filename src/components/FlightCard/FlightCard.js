@@ -5,6 +5,7 @@ export default function FlightCard(props) {
   const { flightDetails } = props;
   const navigate = useNavigate();
   const mostVisitedCardRef = useRef(null);
+  console.log('img',flightDetails.imageURL)
   
   useEffect(() => {
     const mostVisitedCard = document.querySelectorAll('.mostVisitedCard');
@@ -13,7 +14,7 @@ export default function FlightCard(props) {
       rootMargin: '0px',
       threshold: 0.5
     };
-// sdsads
+
     const observer = new IntersectionObserver((entities, observer) => {
       entities.forEach((entity, index) => {
         if (entity.isIntersecting) {
@@ -35,9 +36,10 @@ export default function FlightCard(props) {
   }, []);
 
   return (
+    <div className="mx-auto">
     <div>
       <div className="card mostVisitedCard" style={{ width: "18rem", opacity: 0 }} ref={mostVisitedCardRef}>
-        <img className="card-img-top" src={flightDetails.image} alt="Card cap" />
+        <img className="card-img-top" src={`http://localhost:5269/Images//${flightDetails.imageURL}`} alt="Card cap" />
         <div className="card-body">
           <h5 className="card-title">From <span style={{ color: 'hsl(199, 100%, 33%)' }}> {flightDetails.sourceAirportName}</span></h5>
           <h5 className="card-title">
@@ -55,10 +57,12 @@ export default function FlightCard(props) {
             className="btn btn-primary"
             onClick={() => navigate(`/FlightDetails/${flightDetails.id}`)}
           >
-            Details
+           <i className="fa-solid fa-circle-info text-light"></i>  Details
           </button>
         </div>
       </div>
+
+    </div>
     </div>
   );
 }
